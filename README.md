@@ -14,9 +14,11 @@ The purpose of this project is to create a data pipeline using Databricks and to
 
 ## Preparation and usage
 1. Configure a cluster in Databricks  
+![alt text](images/compute.png)
+
 2. Load repo to code spaces
 3. Run main.py script for ETL and querying
-![alt text](images/install.png)
+
 
 4. Run main.py to load in database and run queries
 
@@ -31,6 +33,17 @@ The purpose of this project is to create a data pipeline using Databricks and to
 ![alt text](images/test.png)
 
 (alternatively, do all with `make all`)
+
+
+## Databricks Table:
+- Successful read in of data:  
+
+
+![alt text](images/etl.png)
+
+- Successful loading in as table in Databricks:  
+
+![alt text](images/table.png)
 
 ## Query Explanation:
 ```sql
