@@ -1,8 +1,8 @@
 ## Databricks Pipeline :computer: 
 [![CI](https://github.com/nogibjj/jdc_week_10/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/jdc_week_10/actions/workflows/cicd.yml)
 
-The purpose of this project is to create a data pipeline using Databricks and to include at least one data source and one data sink. This was done in Databricks by first creating a cluster and running Databricks notebooks to extract and load in the data in order to query. The [dataset](https://github.com/fivethirtyeight/data/tree/master/nba-draft-2015) is extracted from a url, loaded as a csv in dbfs, and then loaded in as a table in Databricks. It contains historical results of the NBA draft projection model, 2001-2015.
-The purpose of this project is to create a data pipeline using Databricks and include at least one data source and one data sink. After configuring a cluster in Databricks, a [dataset](https://github.com/fivethirtyeight/data/tree/master/nba-draft-2015) is extracted from a url and loaded as a csv into Databricks DBFS. This dataset contains historical results of the NBA draft projection model, 2001-2015. The data was then read in as a Pyspark Dataframe, transformed by changing column names and adding a column indicating whether a player from the draft is a Projected Starter, and loaded in as a Databricks table. 
+The purpose of this project is to create a data pipeline using Databricks and to include at least one data source and one data sink. This was done in Databricks by first creating a cluster in Databricks before extracting and loading in data for querying. The [dataset](https://github.com/fivethirtyeight/data/tree/master/nba-draft-2015) is extracted from a url, loaded as a csv into Databricks DBFS,  read in as a Pyspark Dataframe, transformed by changing column names and adding a column indicating whether a player from the draft is a Projected Starter, and loaded in as a Databricks table. This dataset contains historical results of the NBA draft projection model, 2001-2015
+
 
 ## Functionality and commands:
 * extract_transform_load.py - contains functions to extract the data, save it to dbfs, read in the data as a spark dataframe, and load it in as a table with a schema defined in Databricks.
@@ -13,9 +13,9 @@ The purpose of this project is to create a data pipeline using Databricks and in
 * Dockerfile and devcontainer
 
 ## Preparation and usage
-1. Open codespaces 
+1. Configure a cluster in Databricks  
 2. Load repo to code spaces
-3. Wait for installation of all requirements in requirements.txt
+3. Run main.py script for ETL and querying
 ![alt text](images/install.png)
 
 4. Run main.py to load in database and run queries
