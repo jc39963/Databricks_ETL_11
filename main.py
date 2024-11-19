@@ -1,16 +1,15 @@
-"""
-Main cli or app entry point
-"""
-from mylib.lib import spark_session, extract_data, read_data, sql_query, transform
+from mylib.extract_transform_load import extract_data, transform, transform_load_data
+from mylib.query import sql_query
+from pyspark.sql import SparkSession, DataFrame
+import pyspark.sql.functions as F
+from pyspark.sql.functions import col
 
 if __name__ == "__main__":
-    session = spark_session("PySpark")
-    extract_data()
-    data = read_data("data/nba_2015.csv", session)
+    session = SparkSession.builder.appName("nbaDataPipeline").getOrCreate()
+    df = extract_data()
+    df = transform(df)
+    print("Dataframe with transformation extra column: Projected Starter:")
+    df.show()
+    transform_load_data(df)
     print("Result of query:")
-    sql_query(data, session)
-    print("Data before transformation:")
-    print(data.show())
-    transformed_data = transform(data)
-    print("Data after tranformation:")
-    print(transformed_data.show())
+    sql_query(session)

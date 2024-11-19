@@ -1,71 +1,31 @@
 """
-Test goes here
-
+Test databricks fucntionaility
 """
+import requests
+from dotenv import load_dotenv
 import os
-from pyspark.sql import SparkSession
-from mylib.lib import extract_data, spark_session, read_data, sql_query, transform
 
+# Load environment variables
+load_dotenv()
+server_h = os.getenv("SERVER_HOSTNAME")
+access_token = os.getenv("ACCESS_TOKEN")
+FILESTORE_PATH = "dbfs:/FileStore/mini_project11"
+url = f"https://{server_h}/api/2.0"
 
-def test_spark():
-    spark = spark_session("Pyspark")
-    assert isinstance(spark, SparkSession), "Test failed."
-    print("Spark session passed successfully.")
+# Function to check if a file path exists and auth settings still work
+def check_filestore_path(path, headers): 
+    try:
+        response = requests.get(url + f"/dbfs/get-status?path={path}", headers=headers)
+        response.raise_for_status()
+        return response.json()['path'] is not None
+    except Exception as e:
+        print(f"Error checking file path: {e}")
+        return False
 
-
-def test_extract_data():
-    result = extract_data()
-    assert os.path.exists(result)
-    print("successfully extracted data")
-
-
-def test_read_data():
-    session = spark_session("PySpark")
-    data = read_data("data/nba_2015.csv", session)
-    assert data.columns == [
-        "Player",
-        "Position",
-        "ID",
-        "Draft Year",
-        "Projected SPM",
-        "Superstar",
-        "Starter",
-        "Role Player",
-        "Bust",
-    ]
-    print("successfully read data")
-
-
-def test_sql_query():
-    session = spark_session("PySpark")
-    data = read_data("data/nba_2015.csv", session)
-    result = sql_query(data, session)
-    assert result.columns == ["Player", "Above_Average"]
-    print("successful query")
-
-
-def test_transform():
-    session = spark_session("PySpark")
-    data = read_data("data/nba_2015.csv", session)
-    result = transform(data)
-    assert result.columns == [
-        "Player",
-        "Position",
-        "ID",
-        "Draft Year",
-        "Projected SPM",
-        "Superstar",
-        "Starter",
-        "Role Player",
-        "Bust",
-        "Projected Starter",
-    ]
-    print("successful transformation")
-
+# Test if the specified FILESTORE_PATH exists
+def test_databricks():
+    headers = {'Authorization': f'Bearer {access_token}'}
+    assert check_filestore_path(FILESTORE_PATH, headers) is True
 
 if __name__ == "__main__":
-    test_spark()
-    test_extract_data()
-    test_read_data()
-    test_sql_query()
-    test_transform()
+    test_databricks()

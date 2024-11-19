@@ -13,8 +13,10 @@ requests
 #web
 #fastapi==0.85.0
 #uvicorn==0.18.3
-#databricks
-#databricks-sql-connector
+databricks
+databricks-sql-connector
+pandas 
+urllib
 
 
 
