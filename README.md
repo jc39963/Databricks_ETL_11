@@ -18,32 +18,29 @@ The purpose of this project is to create a data pipeline using Databricks and to
 
 2. Load repo to code spaces
 3. Run main.py script for ETL and querying
-
-
-4. Run main.py to load in database and run queries
-
-## Check format and test errors
-1. Format code `make format`
-![alt text](images/format.png)
-
-2. Lint code `make lint`
-![alt text](images/lint.png)
-
-3. Test code `make test`
-![alt text](images/test.png)
-
-(alternatively, do all with `make all`)
+4. If on Databricks, configure job in workflows for ETL and querying.
 
 
 ## Databricks Table:
 - Successful read in of data:  
-
 
 ![alt text](images/etl.png)
 
 - Successful loading in as table in Databricks:  
 
 ![alt text](images/table.png)
+
+## Databricks Job
+Manual run of Job for extracting, transforming, loading, and querying
+To create a job, go to Workflows, New Job, and add tasks:
+* Configure path, cluster, type, and dependencies. 
+* Option to add a trigger and schedule the job run or keep it manual.
+
+![alt text](images/create.png)
+
+
+![alt text](images/job.png)
+![alt text](images/job2.png)
 
 ## Query Explanation:
 ```sql
