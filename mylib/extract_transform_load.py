@@ -6,7 +6,9 @@ import urllib.request
 
 
 
-def extract_data(url = "https://github.com/fivethirtyeight/data/raw/refs/heads/master/nba-draft-2015/historical_projections.csv", download_path = "/dbfs/tmp/jdc_draft_2015.csv", file_path = "/tmp/jdc_draft_2015.csv"):
+def extract_data(url = "https://github.com/fivethirtyeight/data/raw/refs/heads/master/nba-draft-2015/historical_projections.csv", 
+    download_path = "/dbfs/tmp/jdc_draft_2015.csv", 
+    file_path = "/tmp/jdc_draft_2015.csv"):
     spark = SparkSession.builder.appName("nbaDataPipeline").getOrCreate()
     # Download the file
     urllib.request.urlretrieve(url, download_path)
@@ -28,7 +30,8 @@ def transform_load_data(df):
     df = df.select(
         [col(c).alias(c.replace(" ", "")) for c in df.columns]
     )
-    df.write.option("mergeSchema", "true").mode("overwrite").saveAsTable("ids706_data_engineering.default.jdc_nba_2015")
+    df.write.option("mergeSchema", "true").mode("overwrite")\
+    .saveAsTable("ids706_data_engineering.default.jdc_nba_2015")
     print("Data written to Databricks table.")
 
 

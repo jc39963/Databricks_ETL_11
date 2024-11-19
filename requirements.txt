@@ -16,7 +16,6 @@ requests
 databricks
 databricks-sql-connector
 pandas 
-urllib
 python-dotenv
 
 

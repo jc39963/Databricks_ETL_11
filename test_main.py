@@ -2,10 +2,8 @@
 Test databricks fucntionaility
 Test databricks fucntionaility
 """
-import requests
 from dotenv import load_dotenv
 import requests
-from dotenv import load_dotenv
 import os
 
 # Load environment variables
