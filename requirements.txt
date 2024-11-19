@@ -15,6 +15,7 @@ requests
 #uvicorn==0.18.3
 #databricks
 #databricks-sql-connector
+python-dotenv
 
 
 

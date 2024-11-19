@@ -1,10 +1,10 @@
-## PySpark Data Processing :computer: 
+## Databricks ETL :computer: 
 [![CI](https://github.com/nogibjj/jdc_week_10/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/jdc_week_10/actions/workflows/cicd.yml)
 
-The purpose of this project is to use PySpark to perform data processing on a large dataset with at least one Spark SQL query and one data transformation. This was all done using Github codespaces as a virtual environment rather than downloading PySpark locally. The [dataset](https://github.com/fivethirtyeight/data/tree/master/nba-draft-2015) is extracted from a url and loaded as a csv. It contains historical results of the NBA draft projection model, 2001-2015.
+The purpose of this project is to create a data pipeline using Databricks and include at least one data source and one data sink. After configuring a cluster in Databricks, a [dataset](https://github.com/fivethirtyeight/data/tree/master/nba-draft-2015) is extracted from a url and loaded as a csv into Databricks DBFS. This dataset contains historical results of the NBA draft projection model, 2001-2015. The data was then read in as a Pyspark Dataframe, transformed by changing column names and adding a column indicating whether a player from the draft is a Projected Starter, and loaded in as a Databricks table. 
 
 ## Functionality and commands:
-* lib.py - contains functions to initialize a spark session, extract the data and save it into the local directory, read in the data as a spark dataframe, perform a SQL query, and transform the data using pyspark.sql functions. 
+* extract.py - contains functions to initialize a spark session, extract the data and save it into the local directory, read in the data as a spark dataframe, perform a SQL query, and transform the data using pyspark.sql functions. 
 * main.py - imports function from lib and runs the operations.
 * test_main.py - tests each operation
 * CI/CD pipeline   
