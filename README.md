@@ -1,5 +1,5 @@
 ## Databricks Pipeline :computer: 
-[![CI](https://github.com/nogibjj/jdc_week_10/actions/workflows/cicd.yml/badge.svg)](https://github.com/nogibjj/jdc_week_10/actions/workflows/cicd.yml)
+[![CI](https://github.com/jc39963/Databricks_ETL_11/actions/workflows/cicd.yml/badge.svg)](https://github.com/jc39963/Databricks_ETL_11/actions/workflows/cicd.yml)
 
 The purpose of this project is to create a data pipeline using Databricks and to include at least one data source and one data sink. This was done in Databricks by first creating a cluster in Databricks before extracting and loading in data for querying. The [dataset](https://github.com/fivethirtyeight/data/tree/master/nba-draft-2015) is extracted from a url, loaded as a csv into Databricks DBFS,  read in as a Pyspark Dataframe, transformed by changing column names and adding a column indicating whether a player from the draft is a Projected Starter, and loaded in as a Databricks table. This dataset contains historical results of the NBA draft projection model, 2001-2015
 
