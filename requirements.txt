@@ -17,6 +17,7 @@ databricks
 databricks-sql-connector
 pandas 
 urllib
+dotenv
 
 
 
